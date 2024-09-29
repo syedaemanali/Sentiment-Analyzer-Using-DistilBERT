@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sentiment Analysis Results</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            background-color: #f4f4f9;
+        }
+        h1 {
+            font-weight: bold;
+            margin-bottom: 40px;
+        }
+        .card {
+            background-color: #fff;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+        }
+        .card h4 {
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+        .card p {
+            font-size: 1.2rem;
+            margin-bottom: 5px;
+        }
+        .icon-large {
+            font-size: 2.5rem;
+            color: #007bff;
+        }
+        .container h3 {
+            margin-top: 30px;
+            margin-bottom: 20px;
+            font-weight: bold;
+        }
+        .img-fluid {
+            border-radius: 10px;
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+<body>
+    <div class="container mt-5">
+        <h1 class="text-center">Sentiment Analysis Results</h1>
+
+        <!-- Chart Section -->
+        <div class="row mb-4">
+            <div class="col-md-6">
+                <div class="card">
+                    <h4>Sentiment Distribution</h4>
+                    <div>{{ pie_chart | safe }}</div>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="card">
+                    <h4>Word Cloud for Negative Reviews</h4>
+                    <img src="data:image/png;base64,{{ neg_wordcloud_image }}" class="img-fluid" alt="Negative Word Cloud">
+                </div>
+            </div>
+        </div>
+
+        <!-- Ratings Section -->
+        <div class="row mb-4">
+            <div class="col-md-6">
+                <div class="card">
+                    <h4>Reviews by Star Rating</h4>
+                    {% if bar_chart %}
+                        <div>{{ bar_chart | safe }}</div>
+                    {% else %}
+                        <p class="text-muted">No rating data available to display ratings.</p>
+                    {% endif %}
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="card">
+                    <h4>Sentiment by Review Length</h4>
+                    <div id="length-chart">{{ length_chart | safe }}</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Summary Section -->
+        <div class="row mt-4">
+            <div class="col-md-12 text-center">
+                <h3 class="text-primary">Summary</h3>
+            </div>
+        </div>
+
+        <div class="row text-center">
+            <div class="col-md-4">
+                <div class="card bg-success text-white">
+                    <div class="card-body">
+                        <i class="fas fa-thumbs-up icon-large"></i>
+                        <h4>Total Reviews</h4>
+                        <p class="card-text">{{ total_reviews }}</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-md-4">
+                <div class="card bg-warning text-dark">
+                    <div class="card-body">
+                        <i class="fas fa-smile icon-large"></i>
+                        <h4>Positive Reviews</h4>
+                        <p class="card-text">{{ good_count }}</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="card bg-danger text-white">
+                    <div class="card-body">
+                        <i class="fas fa-frown icon-large"></i>
+                        <h4>Negative Reviews</h4>
+                        <p class="card-text">{{ bad_count }}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.min.js"></script>
+</body>
+</html>

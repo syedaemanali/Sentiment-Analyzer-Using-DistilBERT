@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upload File for Sentiment Analysis</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    <style>
+        body {
+            background-color: #f7f8fa; /* Light background color */
+            color: #343a40; 
+            font-family: 'Poppins', sans-serif;
+        }
+        .header {
+            background-color: #ff6f61; /* Coral color */
+            color: white;
+            padding: 40px 0;
+            border-radius: 8px;
+            margin-bottom: 40px;
+            text-align: center;
+        }
+        .header h1 {
+            font-size: 2.5rem;
+            font-weight: bold;
+        }
+        .header p {
+            font-size: 1.1rem; 
+            margin-bottom: 20px;
+        }
+        .header .btn-custom {
+            background-color: #4bc0c8; /* Teal color */
+            color: white;
+            padding: 10px 20px;
+            font-size: 1.2rem;
+            font-weight: 500;
+            transition: background-color 0.3s ease;
+        }
+        .header .btn-custom:hover {
+            background-color: #36a5a6; /* Darker teal */
+        }
+
+        .card {
+            border: none;
+            border-radius: 10px;
+            background: #ffffff; /* White card background */
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .card:hover {
+            transform: translateY(-8px); 
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15); 
+        }
+        .card h2 {
+            font-size: 1.8rem;
+            font-weight: 600;
+        }
+        .card p {
+            font-size: 1rem;
+            color: #6c757d; 
+        }
+        .icon {
+            font-size: 2.5rem;
+            color: #ff6f61; /* Coral color */
+            margin-bottom: 15px;
+        }
+        .row .col-md-4 {
+            margin-bottom: 30px;
+        }
+        .footer {
+            background-color: #ff6f61; /* Coral color */
+            color: white;
+            padding: 20px 0;
+            text-align: center;
+            margin-top: 50px;
+            border-radius: 8px;
+        }
+        .footer p {
+            margin: 0;
+            font-size: 1rem;
+        }
+    </style>
+    <!-- Import Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <div class="container mt-5">
+        <!-- Header Section -->
+        <div class="header">
+            <h1>Unlock Customer Feedback with AI Sentiment Analysis</h1>
+            <p>Upload your customer reviews, feedback, or text datasets and get instant insights on satisfaction trends, pain points, and more.</p>
+            <a href="/upload" class="btn btn-custom btn-lg">Start Analyzing</a>
+        </div>
+
+        <!-- Features Section -->
+        <div class="row mt-5 text-center">
+            <div class="col-md-4">
+                <div class="card p-4">
+                    <div class="icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h2>Real-time Insights</h2>
+                    <p>Get immediate feedback on your customers' sentiments and satisfaction levels with our AI-powered analysis.</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card p-4">
+                    <div class="icon">
+                        <i class="fas fa-chart-pie"></i>
+                    </div>
+                    <h2>Interactive Visuals</h2>
+                    <p>Explore data with interactive charts, graphs, and word clouds that help you understand customer trends better.</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card p-4">
+                    <div class="icon">
+                        <i class="fas fa-database"></i>
+                    </div>
+                    <h2>Data Exploration</h2>
+                    <p>Filter by specific products, time frames, or sentiment categories to dive deep into customer feedback.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer Section -->
+    <div class="footer mt-5">
+        <p>&copy; 2024 Sentiment Analysis Dashboard. All Rights Reserved.</p>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

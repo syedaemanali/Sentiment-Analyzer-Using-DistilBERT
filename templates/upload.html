@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upload File for Sentiment Analysis</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    <style>
+        body {
+            background-color: #f7f8fa; /* Light background color */
+            color: #333; /* Dark text color */
+        }
+        .container {
+            margin-top: 50px;
+        }
+        .card {
+            border: none;
+            border-radius: 8px;
+            background: #ffffff; /* White card background */
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+        }
+        .card-header {
+            background-color: #ff6f61; /* Coral color */
+            color: white;
+            padding: 20px;
+            border-top-left-radius: 8px;
+            border-top-right-radius: 8px;
+        }
+        .btn-primary {
+            background-color: #4bc0c8; /* Teal color */
+            border: none;
+        }
+        .btn-primary:hover {
+            background-color: #36a5a6; /* Darker teal on hover */
+        }
+        h1 {
+            font-family: 'Arial', sans-serif; /* Change font family */
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="card">
+            <div class="card-header text-center">
+                <h1>Upload File for Sentiment Analysis</h1>
+            </div>
+            <div class="card-body">
+                <!-- Display flash messages -->
+                {% with messages = get_flashed_messages() %}
+                    {% if messages %}
+                        <div class="mb-3">
+                            {% for message in messages %}
+                                <div class="alert alert-info alert-dismissible fade show" role="alert">
+                                    {{ message }}
+                                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                                </div>
+                            {% endfor %}
+                        </div>
+                    {% endif %}
+                {% endwith %}
+
+                <!-- Form submits to the /analyze route -->
+                <form method="POST" action="{{ url_for('analyze') }}" enctype="multipart/form-data">
+                    <div class="mb-3">
+                        <label for="fileType" class="form-label">Select File Type</label>
+                        <select class="form-select" name="fileType" id="fileType" required>
+                            <option value="txt">Text File (.txt)</option>
+                            <option value="csv">CSV File (.csv)</option>
+                            <option value="json">JSON File (.json)</option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label for="file" class="form-label">Upload File</label>
+                        <input class="form-control" type="file" id="file" name="file" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-lg w-100">Analyze Sentiment</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
